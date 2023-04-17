@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Greetings!" icon-name="custom:custom14">
+      <div class="slds-m-around_medium">
+        <p>Hope you are having a great {timeOfDay} today, {person}</p>
+        <lightning-input label="Name" value={person} onchange={changeHandler}></lightning-input>
+        <lightning-input label="Time of the day" value={timeOfDay} onchange={changeHandler}></lightning-input>
+      </div>
+    </lightning-card>
+  </template>

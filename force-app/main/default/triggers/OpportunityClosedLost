@@ -1,0 +1,15 @@
+Trigger OpportunintyClosedLost on Opportunity (after update) {
+
+	List<Opportunity> toProcess = new List<Opportunity>();
+	
+    for(Opportunity opp : Trigger.New){
+        if(opp.Stage != [SELECT id FROM Trigger.Old WHERE Id = opp.Id].Stage && opp.Stage != "Closed Lost"){
+            opp.Stage = "Closed Lost";
+            toProcess.add(opp);
+        }
+    }
+    database.update(toProcess);
+}
+
+
+SELECT Id, (SELECT Id FROM Contact WHERE AccountId = :accID) FROM ACCOUNT WHERE Id = accId
